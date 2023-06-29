@@ -1,0 +1,96 @@
+.fbzKiw {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.mb3{
+    background-color: white;
+    border-radius: 15px;
+    height: 500px;
+}
+
+.form{
+    width: 400px;
+    height: auto;
+    margin-top: 90px;
+    margin-left: 35%;
+}
+
+.id{
+    margin-left: 50px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    width: 305px;
+    padding-left: 50px;
+    background-color: #E3E5EC;
+    border: #E3E5EC;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-image: url("https://cdn-icons-png.flaticon.com/128/3759/3759331.png");
+    background-repeat: no-repeat;
+    background-size: 21px;
+    align-items: center;
+    background-position: 4px center;
+    display: flex;
+    background-position-x: 20px;
+}
+
+.password{
+    margin-left: 50px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    width: 305px;
+    padding-left: 50px;
+    background-color: #E3E5EC;
+    border: #E3E5EC;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-image: url("https://cdn-icons-png.flaticon.com/128/9883/9883936.png");
+    background-repeat: no-repeat;
+    background-size: 23px;
+    align-items: center;
+    background-position: 4px center;
+    display: flex;
+    background-position-x: 20px;
+}
+
+::placeholder{
+    color:black;
+}
+
+.titulo{
+    margin-left: 50px;
+    padding-top: 40px;
+    padding-bottom: 45px;
+}
+
+.title{
+    color: #021143;
+    font-weight: bold;
+}
+
+.form-check-label{
+    color:#C577FE;
+}
+
+.form-check{
+    margin-left: 45px;
+    margin-bottom: 30px;
+}
+
+.boton{
+    margin-left: 50px;
+}
+
+.btn{
+    width: 305px;
+    border-radius: 20px;
+    background-color: #021143;
+    border:#021143;
+    font-size: medium;
+    font-weight: bold;
+    
+}
