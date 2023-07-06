@@ -41,7 +41,7 @@
                     <th> Grado </th>
                     <th> Curso </th>
                     <th> Profesor </th>
-                    <th> Acciones </th>
+                    <th style="width: 100px;"> Acciones </th>
                 </tr>
             </thead>
             <tbody>
@@ -56,8 +56,13 @@
                   {{item.profesor}}
                 </th>
                 <th>
-                  <div>
-                    
+                  <div class="acciones">
+                    <div (click)="editar(item)" class="accciones-editar">
+                      <img data-bs-toggle="modal" data-bs-target="#Modal"  class="icon-editar" src="https://img.icons8.com/?size=1x&id=ltMOGtgNYnUg&format=png" />
+                    </div>
+                    <div class="accciones-delete">
+                      <img class="icon-delete" src="https://img.icons8.com/?size=1x&id=67884&format=png" />
+                    </div>
                   </div>
                 </th>
               </tr>
@@ -94,11 +99,6 @@
           <div type="correo" class="grado">
             <select formControlName="grado" class="grado">
               <option hidden selected> GRADO </option>
-              <option value="6"> 6 </option>
-              <option value="7"> 7 </option>
-              <option value="8"> 8 </option>
-              <option value="9"> 9 </option>
-              <option value="10"> 10 </option>
               <option value="11"> 11 </option>
             </select>
             <select formControlName="curso" class="curso">
@@ -106,16 +106,15 @@
               <option value="1"> 1 </option>
               <option value="2"> 2 </option>
               <option value="3"> 3 </option>
-              <option value="4"> 4 </option>
             </select>
           </div>
           <div type="correo" class="correo">
-            <input formControlName="profesor" type="number" class="correo" placeholder="PROFESOR" />
+            <input formControlName="profesor" value="profesor" type="number" class="correo" placeholder="PROFESOR" />
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button (click)="cancelar()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cancelar
         </button>
         <button type="submit" class="btn btn-primary">Guardar</button>

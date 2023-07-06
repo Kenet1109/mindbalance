@@ -39,7 +39,7 @@
                       <th> NOMBRE </th>
                       <th> CORREO </th>
                       <th style="width: 160px;"> CONTACTO </th>
-                      <th> ACCIONES</th>
+                      <th style="width: 100px;"> ACCIONES</th>
                   </tr>
               </thead>
               <tbody>
@@ -58,7 +58,14 @@
                   </th>
                   <th>
                     <div>
-                      
+                      <div class="acciones">
+                        <div (click)="editar(item)" class="accciones-editar">
+                          <img data-bs-toggle="modal" data-bs-target="#Modal"  class="icon-editar" src="https://img.icons8.com/?size=1x&id=ltMOGtgNYnUg&format=png" />
+                        </div>
+                        <div class="accciones-delete">
+                          <img class="icon-delete" src="https://img.icons8.com/?size=1x&id=67884&format=png" />
+                        </div>
+                      </div>
                     </div>
                   </th>
                 </tr>

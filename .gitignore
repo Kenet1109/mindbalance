@@ -24,6 +24,7 @@ chrome-profiler-events*.json
 
 # IDE - VSCode
 .vscode/*
+.node_modules/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json

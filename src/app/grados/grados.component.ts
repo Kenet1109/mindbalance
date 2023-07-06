@@ -28,9 +28,12 @@ export class GradosComponent implements OnInit {
     });
 
     let arrayGrados: Array<Grados> = [];
+    
     this.servicioGrados.getGrados().subscribe(datos => {
       this.datosGrados = datos.data;
     });
+
+    this.datosGrados = arrayGrados;
 
   }
 
@@ -39,13 +42,13 @@ export class GradosComponent implements OnInit {
       if (form.value.id && form.value.id !== 0) {
         this.servicioGrados.updateGrados(form.value).subscribe(data => {
           alert("Se Actualizo el Grado con exito!")
-          this.refresh(form);
+          this.refresh();
           this.myForm.reset();
         });
       } else {
         this.servicioGrados.createGrados(form.value).subscribe(data => {
           alert("Se registro el Grado con exito!")
-          this.refresh(form);
+          this.refresh();
           this.myForm.reset();
         });
       }
@@ -54,7 +57,7 @@ export class GradosComponent implements OnInit {
     }
   }
 
-  refresh(form: FormGroup) {
+  refresh() {
     let arrayGrados: Array<Grados> = [];
     this.servicioGrados.getGrados().subscribe(datos => {
       this.datosGrados = datos.data;
@@ -66,8 +69,21 @@ export class GradosComponent implements OnInit {
       id: datos.id,
       grados: datos.grado,
       curso: datos.curso,
-      profesor: datos.profesor
+      profesor: datos.profesor,
     })
   }
 
+  eliminar(form : FormGroup){
+    if(form.valid){
+      this.servicioGrados.deleteGrados(form.value).subscribe(datos =>{
+        alert("El grado ha sido eliminado!")
+        this.myForm.reset();
+        this.refresh();
+      });
+    }
+  }
+
+  cancelar(){
+    this.myForm.reset();
+  }
 }

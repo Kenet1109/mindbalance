@@ -199,3 +199,30 @@ input[type=number]::-webkit-outer-spin-button {
 .curso {
     margin-left: 30px;
 }
+
+.acciones {
+    display: inline-flex;
+    margin-left: 10px;
+}
+
+.acciones-editar {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+.accciones-delete {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+.icon-delete {
+    width: 20px;
+    height: 20px;
+}
+
+.icon-editar {
+    width: 20px;
+    height: 20px;
+}
