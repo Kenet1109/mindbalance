@@ -1,14 +1,19 @@
 <div class="col-menu">
   <div class="nav-absolute">
-    <div class="menu-nav">
-      <img
-        class="icon-menu"
-        src="https://media-public.canva.com/3qtvw/MAFUnl3qtvw/1/t.png"
-        alt=""
-      />
-    </div>
+    <a routerLink="/home">
+      <div class="menu-nav">
+        <img
+          class="icon-menu"
+          src="https://media-public.canva.com/3qtvw/MAFUnl3qtvw/1/t.png"
+          alt=""
+        />
+      </div>
+    </a>
+
     <div class="title-menu">
-      <h1 class="title">MIND BALANCE</h1>
+      <a routerLink="/home">
+        <h3 class="title">MIND BALANCE</h3>
+      </a>
       <div class="menu">
         <label for="btn-menu" class="btn-menu">
           <img
@@ -32,14 +37,16 @@
             src="https://cdn-icons-png.flaticon.com/128/3759/3759331.png"
           />
         </a>
-        <ul class="dropdown-menu" aria-labelledby="login-logout">
-          <div class="logout">
-            <img
-              class="icon"
-              src="https://cdn-icons-png.flaticon.com/128/152/152534.png"
-            />
-          </div>
-        </ul>
+        <div class="dropup-center dropup">
+          <ul class="dropdown-menu area" aria-labelledby="login-logout">
+            <div class="logout">
+              <img
+                class="icon"
+                src="https://cdn-icons-png.flaticon.com/128/152/152534.png"
+              />
+            </div>
+          </ul>
+        </div>
       </div>
       <div>
         <img
@@ -56,46 +63,200 @@
     </div>
   </div>
 </div>
-<div class="side-menu" style>
-  <input type="checkbox" id="btn-menu" />
-  <div class="container-menu">
-    <div class="cont-menu">
-      <div class="cont-user">
-        <div class="menu-img">
-          <img
-            class="user-menu"
-            src="https://cdn-icons-png.flaticon.com/128/3759/3759331.png"
-          />
+
+<div class="contenedor">
+  <div class="render">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="side-menu">
+    <input type="checkbox" id="btn-menu" />
+    <div class="container-menu">
+      <div class="cont-menu">
+        <div class="cont-user">
+          <div class="menu-img">
+            <img
+              class="user-menu"
+              src="https://cdn-icons-png.flaticon.com/128/3759/3759331.png"
+            />
+          </div>
+          <div class="menu-estado">
+            <div>
+              <label>
+                <h4>Administrador</h4>
+              </label>
+            </div>
+            <div class="estado">
+              <div class="activo"></div>
+              <label> En linea</label>
+            </div>
+          </div>
         </div>
-        <div class="menu-estado">
-          <label>
-            <h3>Administrador</h3>
-          </label>
-          <br />
-          <label> En linea</label>
+        <nav>
+          <a routerLink="/home">
+            <img
+              src="https://media-public.canva.com/wcjnM/MADmjJwcjnM/3/t.png"
+              class="icon-desple"
+            />
+            <label class="home"> Inicio</label>
+          </a>
+        </nav>
+        <div class="menu-title">
+          <label><h3>General</h3></label>
         </div>
+        <nav>
+          <a routerLink="/grados"
+            ><img
+              src="https://media-public.canva.com/FVIKE/MAEpKfFVIKE/1/t.png"
+              class="icon-desple"
+            /><label class="home"> Grados</label>
+          </a>
+          <div class="btn-group dropend">
+            <a
+              class="dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              dropdown-toggle-split
+            >
+              <img
+                src="https://media-public.canva.com/Xr5lA/MAEeCsXr5lA/1/t.png"
+                class="icon-desple"
+              />
+              <label class="home">Usuarios</label>
+              <ul class="dropdown-menu">
+                <li>
+                  <a routerLink="/usuarios/psicologas" class="dropdown-item">
+                    <img
+                      src="https://media-public.canva.com/Xr5lA/MAEeCsXr5lA/1/t.png"
+                      class="icon-desple"
+                    />
+                    <label class="home">Psicóloga</label>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/usuarios/estudiantes" class="dropdown-item">
+                    <img
+                      src="https://media-public.canva.com/M2Gnk/MAEv88M2Gnk/1/t.png"
+                      class="icon-desple"
+                    />
+                    <label class="home">Estudiantes</label>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/usuarios/profesores" class="dropdown-item">
+                    <img
+                      src="https://media-public.canva.com/TuSYY/MAEv9wTuSYY/1/t.png"
+                      class="icon-desple"
+                    />
+                    <label class="home">Profesores</label>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/usuarios/padresdefamilia" class="dropdown-item">
+                    <img
+                      src="https://media-public.canva.com/lTKGw/MAFEPTlTKGw/1/t.png"
+                      class="icon-desple"
+                    />
+                    <label class="home">Padre de familia</label>
+                  </a>
+                </li>
+              </ul>
+            </a>
+          </div>
+          <div class="btn-group dropend">
+            <a
+              class="dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              dropdown-toggle-split
+              ><img
+                src="https://media-public.canva.com/rR9MU/MAEtDhrR9MU/1/t.png"
+                class="icon-desple"
+              />
+              <label class="home">Gestionar Usuarios</label>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" routerLink="/gestionarusuarios/psicologas">
+                    <img
+                      src="https://media-public.canva.com/Xr5lA/MAEeCsXr5lA/1/t.png"
+                      class="icon-desple"
+                    />
+                    <label class="home">Psicóloga</label>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/gestionarusuarios/estudiantes">
+                    <img
+                      src="https://media-public.canva.com/M2Gnk/MAEv88M2Gnk/1/t.png"
+                      class="icon-desple"
+                    />
+                    <label class="home">Estudiantes</label>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/gestionarusuarios/profesores">
+                    <img
+                      src="https://media-public.canva.com/TuSYY/MAEv9wTuSYY/1/t.png"
+                      class="icon-desple"
+                    />
+                    <label class="home">Profesores</label>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/gestionarusuarios/padresdefamilia">
+                    <img
+                      src="https://media-public.canva.com/lTKGw/MAFEPTlTKGw/1/t.png"
+                      class="icon-desple"
+                    />
+                    <label class="home">Padre de familia</label>
+                  </a>
+                </li>
+              </ul>
+            </a>
+          </div>
+        </nav>
+        <div class="menu-title">
+          <label><h4>Modulo dé seguimiento</h4></label>
+        </div>
+        <nav>
+          <a href=""
+            ><img
+              src="https://media-public.canva.com/EKKdc/MAEGkaEKKdc/1/t.png"
+              class="icon-desple"
+            />
+            <label class="home">Comportamientos</label></a
+          >
+          <a href=""
+            ><img
+              src="https://media-public.canva.com/-Py8Q/MAEqsh-Py8Q/1/t.png"
+              class="icon-desple"
+            />
+            <label class="home">Generar reportes</label></a
+          >
+          <a href=""
+            ><img
+              src="	https://media-public.canva.com/hvb70/MAExFyhvb70/1/t.png"
+              class="icon-desple"
+            />
+            <label class="home">Tipo de comportamiento</label></a
+          >
+          <a href=""
+            ><img
+              src="https://media-public.canva.com/I1_dY/MAEKXgI1_dY/1/t.png"
+              class="icon-desple"
+            />
+            <label class="home">Actividades</label></a
+          >
+          <a href=""
+            ><img
+              src="https://media-public.canva.com/jq4lg/MAEeCkjq4lg/1/t.png"
+              class="icon-desple"
+            />
+            <label class="home">Seguimiento</label></a
+          >
+        </nav>
       </div>
-      <nav>
-        <a href="">Inicio</a>
-      </nav>
-      <div class="menu-title">
-        <label><h3>General</h3></label>
-      </div>
-      <nav>
-        <a href="">Grados</a>
-        <a href="">Usuarios</a>
-        <a href="">Gestionar Usuarios</a>
-      </nav>
-      <div class="menu-title">
-        <label><h4>Modulo dé seguimiento</h4></label>
-      </div>
-      <nav>
-        <a href="">Comportamientos</a>
-        <a href="">Generar reportes</a>
-        <a href="">Tipo de comportamiento</a>
-        <a href="">Actividades</a>
-        <a href="">Seguimiento</a>
-      </nav>
     </div>
   </div>
 </div>

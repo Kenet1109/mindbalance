@@ -1,0 +1,133 @@
+<div class="contenedor">
+  <div></div>
+  <div
+    class="fbzKiw"
+    style="
+      background: linear-gradient(
+        90deg,
+        rgb(140, 82, 255) 0%,
+        rgb(92, 225, 230) 100%
+      );
+    "
+  >
+    <div>
+      <div class="cabecera">
+        <div class="title-cabe">
+          <div class="cabecera-title">
+            <h1 class="title">Padres</h1>
+          </div>
+          <div class="button-agg">
+            <button
+              class="agregar"
+              data-bs-toggle="modal"
+              data-bs-target="#Modal"
+            >
+              + Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="cuerpo">
+        <div class="cuerpo-cabe">
+          <div class="num">
+            <label> 8 </label>
+          </div>
+          <div class="des">
+            <label> Padres </label>
+          </div>
+          <div class="busqueda">
+            <label>Buscar : </label>
+            <input class="buscar" />
+          </div>
+        </div>
+        <div class="table">
+          <table>
+            <thead>
+              <tr class="table-cabecera">
+                <th style="width: 150px">IDENTIFICACIÓN</th>
+                <th>NOMBRE</th>
+                <th>CORREO</th>
+                <th style="width: 160px">CONTACTO</th>
+                <th style="width: 140px">ACUDIENTE DE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of datosPadres">
+                <th>
+                  {{item.identificacion}}
+                </th>
+                <th>
+                  {{item.nombre}}
+                </th>
+                <th>
+                  {{item.correo}}
+                </th>
+                <th>
+                  {{item.contacto}}
+                </th>
+                <th>
+                  {{item.acudiente}}
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade modal-lg"
+  id="Modal"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+<form [formGroup]="myForm" (ngSubmit)="guardar(myForm)"> 
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Padres de Familia
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="form">
+          <div class="id">
+            <input formControlName="identificacion" type="number" class="id" placeholder="IDENTIFICACION" />
+          </div>
+          <div class="nombre">
+            <input formControlName="nombre" class="nombre" placeholder="NOMBRE" />
+          </div>
+          <div type="correo" class="correo">
+            <input formControlName="correo" class="correo" placeholder="CORREO" />
+          </div>
+          <div class="contacto">
+            <input formControlName="contacto" type="number" class="contacto" placeholder="CONTACTO" />
+          </div>
+          <div class="acudiente">
+            <input
+              formControlName="acudiente"
+              type="number"
+              class="acudiente"
+              placeholder="ACUDIENTE DE "
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
