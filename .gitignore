@@ -7,8 +7,13 @@
 # Only exists if Bazel was run
 /bazel-out
 
-# dependencies
+# Node
 /node_modules
+npm-debug.log
+yarn-error.log
+
+# dependencies
+
 
 # profiling files
 chrome-profiler-events*.json
