@@ -16,7 +16,13 @@ import { GestionestudiantesComponent } from './gestionestudiantes/gestionestudia
 import { GestionpsicologaComponent } from './gestionpsicologa/gestionpsicologa.component';
 import { GestionprofesoresComponent } from './gestionprofesores/gestionprofesores.component';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
+import { GradosServiceService } from './services/grados-service.service';
+import { EstudiantesServiceService } from './services/estudiantes-service.service';
+import { PadresServiceService } from './services/padres-service.service';
+import { ProfesoresServiceService } from './services/profesores-service.service';
+import { PsicologasServiceService } from './services/psicologas-service.service';
 import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -43,7 +49,13 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    GradosServiceService,
+    EstudiantesServiceService,
+    PadresServiceService,
+    ProfesoresServiceService,
+    PsicologasServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

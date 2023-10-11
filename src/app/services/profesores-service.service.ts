@@ -21,7 +21,7 @@ export class ProfesoresServiceService {
   }
 
   updateProfesores(profesores : Profesores) {
-    return this.servicio.put<Profesores>(`${this.servidor}/estudiantes/${profesores.identificacion}` , profesores)
+    return this.servicio.put<Profesores>(`${this.servidor}/profesores/${profesores.identificacion}` , profesores)
   }
 
   deleteProfesores(profesores : Profesores){

@@ -31,15 +31,15 @@ export class PadresComponent implements OnInit{
     })
 
     let arrayPadres : Array<Padres> = [];
-    this.servicioPadres.getPadres().subscribe(datos => {
-      this.datosPadres = datos.data;
+    this.servicioPadres.getPadres().subscribe((data) => {
+      this.datosPadres = data;
     });
   }
 
   guardar(form : FormGroup ){
     if(form.valid){
-      this.servicioPadres.createPadres(form.value).subscribe(data => {
-        alert("Se registro el Grado con exito!")
+      this.servicioPadres.createPadres(form.value).subscribe((data) => {
+        alert("Se registro el Padre con exito!")
         this.refresh();
         this.myForm.reset();
       });
@@ -50,11 +50,13 @@ export class PadresComponent implements OnInit{
 
   refresh (){
     let arrayPadres : Array<Padres> = [];
-    this.servicioPadres.getPadres().subscribe(datos => {
-      this.datosPadres = datos.data;
+    this.servicioPadres.getPadres().subscribe((data) => {
+      this.datosPadres = data;
     });
   }
 
-
+  cancelar(){
+    this.myForm.reset();
+  }
 
 }

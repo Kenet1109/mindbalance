@@ -24,7 +24,7 @@
         <div class="cuerpo">
           <div class="cuerpo-cabe">
             <div class="num">
-              <label> 8 </label>
+              <label>  </label>
             </div>
             <div class="des">
               <label> Psicologas </label>
@@ -81,7 +81,7 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">
           Psicologa
         </h1>
-        <button
+        <button (click)="cancelar()"
           type="button"
           class="btn-close"
           data-bs-dismiss="modal"
@@ -105,7 +105,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button (click)="cancelar()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cancelar
         </button>
         <button type="submit" class="btn btn-primary">Guardar</button>

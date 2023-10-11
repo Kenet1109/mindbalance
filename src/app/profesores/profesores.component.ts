@@ -54,6 +54,8 @@ export class ProfesoresComponent implements OnInit{
     });
   }
 
-
+  cancelar(){
+    this.myForm.reset();
+  }
 
 }

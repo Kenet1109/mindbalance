@@ -3,6 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Grados } from '../interface/grados';
 import { HttpClient } from '@angular/common/http';
 import { GradosServiceService } from '../services/grados-service.service';
+import { AnonymousSubject } from 'rxjs/internal/Subject';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-grados',
@@ -15,26 +18,29 @@ export class GradosComponent implements OnInit {
   datosGrados: Array<Grados> = [];
   data: any;
   datos: any;
+  gradoDelete: any;
+  datosDelete: Array<Grados> = [];
 
   constructor(private fb: FormBuilder, private http: HttpClient, private servicioGrados: GradosServiceService) {
   }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      id: new FormControl(null),
-      grado: new FormControl('GRADO', [Validators.required]),
-      curso: new FormControl('CURSO', [Validators.required]),
+      id: new FormControl(''),
+      grado: new FormControl('',[Validators.required]),
+      curso: new FormControl('',[Validators.required]),
       profesor: new FormControl('', [Validators.required]),
     });
 
     let arrayGrados: Array<Grados> = [];
     
-    this.servicioGrados.getGrados().subscribe(datos => {
-      this.datosGrados = datos.data;
+    this.servicioGrados.getGrados().subscribe(data => {
+      this.datosGrados = data;
     });
 
-    this.datosGrados = arrayGrados;
-
+    this.datosGrados.push({id:1, curso:2, grado:11, profesor:'5073637'},
+                          {id:2, curso:1, grado:11, profesor:'877652'},
+                          {id:3, curso:3, grado:11, profesor:'26536768'})
   }
 
   guardar(form: FormGroup) {
@@ -43,13 +49,13 @@ export class GradosComponent implements OnInit {
         this.servicioGrados.updateGrados(form.value).subscribe(data => {
           alert("Se Actualizo el Grado con exito!")
           this.refresh();
-          this.myForm.reset();
+          this.myForm.reset({grado:'', curso:''});
         });
       } else {
         this.servicioGrados.createGrados(form.value).subscribe(data => {
           alert("Se registro el Grado con exito!")
           this.refresh();
-          this.myForm.reset();
+          this.myForm.reset({grado:'', curso:''});
         });
       }
     } else {
@@ -59,31 +65,34 @@ export class GradosComponent implements OnInit {
 
   refresh() {
     let arrayGrados: Array<Grados> = [];
-    this.servicioGrados.getGrados().subscribe(datos => {
-      this.datosGrados = datos.data;
+    this.servicioGrados.getGrados().subscribe((data) => {
+      this.datosGrados = data;
     });
   }
 
-  editar(datos: Grados) {
-    this.myForm.setValue({
-      id: datos.id,
-      grados: datos.grado,
-      curso: datos.curso,
-      profesor: datos.profesor,
-    })
+  editar(datos : Grados) {
+    this.myForm.setValue({id:datos.id, grado:datos.grado, curso:datos.curso, profesor:datos.profesor});
   }
 
-  eliminar(form : FormGroup){
-    if(form.valid){
-      this.servicioGrados.deleteGrados(form.value).subscribe(datos =>{
-        alert("El grado ha sido eliminado!")
-        this.myForm.reset();
+  eliminar(form : Grados){
+      this.servicioGrados.deleteGrados(form).subscribe((data) =>{
+        alert("El grado ha sido eliminado!");
         this.refresh();
       });
-    }
+      this.datosDelete.shift();
+
   }
 
   cancelar(){
-    this.myForm.reset();
+    this.myForm.reset({grado:'', curso:''});
+  }
+
+  gradocancelar(){
+    this.datosDelete.shift();
+  }
+
+  gradoEliminar(datos : Grados){
+    this.datosDelete.push(datos);
+    console.log(this.datosDelete);
   }
 }

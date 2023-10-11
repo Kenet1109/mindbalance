@@ -6,7 +6,7 @@
       background: linear-gradient(
         90deg,
         rgb(140, 82, 255) 0%,
-        rgb(92, 225, 230) 100%
+        rgb(52, 130, 133) 100%
       );
     "
   >
@@ -17,57 +17,71 @@
             <h1 class="title">Grados</h1>
           </div>
           <div class="button-agg">
-            <button class="agregar" data-bs-toggle="modal" data-bs-target="#Modal">+ Agregar</button>
+            <button
+              class="agregar"
+              data-bs-toggle="modal"
+              data-bs-target="#Modal"
+            >
+              + Agregar
+            </button>
           </div>
         </div>
       </div>
       <div class="cuerpo">
         <div class="cuerpo-cabe">
           <div class="num">
-            <label> 8 </label>
+            <label> {{ datosGrados.length }} </label>
           </div>
           <div class="des">
             <label> Grados </label>
           </div>
-          <div class="busqueda" ng-model="filterPosts">
+          <div class="busqueda" >
             <label>Buscar : </label>
-            <input class="buscar" />
+            <input ng-model="filterPosts" class="buscar" />
           </div>
         </div>
         <div class="table">
-        <table>
-            <thead >
-                <tr class="table-cabecera">
-                    <th> Grado </th>
-                    <th> Curso </th>
-                    <th> Profesor </th>
-                    <th style="width: 100px;"> Acciones </th>
-                </tr>
+          <table>
+            <thead>
+              <tr class="table-cabecera">
+                <th>Grado</th>
+                <th>Curso</th>
+                <th>Profesor</th>
+                <th style="width: 100px">Acciones</th>
+              </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of datosGrados" >
+              <tr *ngFor="let item of datosGrados" ng-repeat="item in datosGrados | filter:filterPosts">
                 <th>
-                  {{item.grado}}
+                  {{ item.grado }}
                 </th>
                 <th>
-                  {{item.curso}}
+                  {{ item.curso }}
                 </th>
                 <th>
-                  {{item.profesor}}
+                  {{ item.profesor }}
                 </th>
                 <th>
                   <div class="acciones">
                     <div (click)="editar(item)" class="accciones-editar">
-                      <img data-bs-toggle="modal" data-bs-target="#Modal"  class="icon-editar" src="https://img.icons8.com/?size=1x&id=ltMOGtgNYnUg&format=png" />
+                      <img
+                        data-bs-toggle="modal"
+                        data-bs-target="#Modal"
+                        class="icon-editar"
+                        src="https://img.icons8.com/?size=1x&id=ltMOGtgNYnUg&format=png"
+                      />
                     </div>
-                    <div class="accciones-delete">
-                      <img class="icon-delete" src="https://img.icons8.com/?size=1x&id=67884&format=png" />
+                    <div (click)="gradoEliminar(item)" class="accciones-delete"  data-bs-toggle="modal" data-bs-target="#deleteGrados">
+                      <img
+                        class="icon-delete"
+                        src="https://img.icons8.com/?size=1x&id=67884&format=png"
+                      />
                     </div>
                   </div>
                 </th>
               </tr>
             </tbody>
-        </table>
+          </table>
         </div>
       </div>
     </div>
@@ -80,46 +94,73 @@
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
-<form [formGroup]="myForm" (ngSubmit)="guardar(myForm)">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
-          Grados
-        </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="form">
-          <div type="correo" class="grado">
-            <select formControlName="grado" class="grado">
-              <option hidden selected> GRADO </option>
-              <option value="11"> 11 </option>
-            </select>
-            <select formControlName="curso" class="curso">
-              <option hidden selected > CURSO </option>
-              <option value="1"> 1 </option>
-              <option value="2"> 2 </option>
-              <option value="3"> 3 </option>
-            </select>
-          </div>
-          <div type="correo" class="correo">
-            <input formControlName="profesor" value="profesor" type="number" class="correo" placeholder="PROFESOR" />
+  <form [formGroup]="myForm" (ngSubmit)="guardar(myForm)">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Grados</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="cancelar()"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div type="correo" class="grado">
+              <select formControlName="grado" class="grado" type="number">
+                <option hidden selected value="">GRADO</option>
+                <option value="11">11</option>
+              </select>
+              <select formControlName="curso" class="curso" type="number">
+                <option hidden selected value="">CURSO</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div type="correo" class="correo">
+              <input
+                formControlName="profesor"
+                type="number"
+                class="correo"
+                placeholder="PROFESOR"
+              />
+            </div>
           </div>
         </div>
+        <div class="modal-footer">
+          <button
+            (click)="cancelar()"
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button (click)="cancelar()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancelar
-        </button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+  </form>
+</div>
+
+<div class="modal fade" id="deleteGrados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div *ngFor="let delet of datosDelete" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Grado</h5>
+        <button (click)="gradocancelar()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label>¿ Desea Eliminar el Grado {{delet.grado}}° Curso {{delet.curso}} ?</label>
+      </div>
+      <div  class="modal-footer">
+        <button (click)="gradocancelar()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button (click)="eliminar(delet)" type="button" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
       </div>
     </div>
   </div>
-</form>
 </div>

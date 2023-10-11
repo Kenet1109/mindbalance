@@ -1,162 +1,199 @@
 <div class="contenedor">
-    <div></div>
-    <div
-      class="fbzKiw"
-      style="
-        background: linear-gradient(
-          90deg,
-          rgb(140, 82, 255) 0%,
-          rgb(92, 225, 230) 100%
-        );
-      "
-    >
-      <div>
-        <div class="cabecera">
-          <div class="title-cabe">
-            <div class="cabecera-title">
-              <h1 class="title">Estudiantes</h1>
-            </div>
-            <div class="button-agg">
-              <button class="agregar" data-bs-toggle="modal" data-bs-target="#Modal">+ Agregar</button>
-            </div>
+  <div></div>
+  <div
+    class="fbzKiw"
+    style="
+      background: linear-gradient(
+        90deg,
+        rgb(140, 82, 255) 0%,
+        rgb(92, 225, 230) 100%
+      );
+    "
+  >
+    <div>
+      <div class="cabecera">
+        <div class="title-cabe">
+          <div class="cabecera-title">
+            <h1 class="title">Estudiantes</h1>
+          </div>
+          <div class="button-agg">
+            <button
+              class="agregar"
+              data-bs-toggle="modal"
+              data-bs-target="#Modal"
+            >
+              + Agregar
+            </button>
           </div>
         </div>
-        <div class="cuerpo">
-          <div class="cuerpo-cabe">
-            <div class="num">
-              <label> 8 </label>
-            </div>
-            <div class="des">
-              <label> Estudiantes </label>
-            </div>
-            <div class="busqueda">
-              <label>Buscar : </label>
-              <input class="buscar" />
-            </div>
+      </div>
+      <div class="cuerpo">
+        <div class="cuerpo-cabe">
+          <div class="num">
+            <label> {{datosEstudiantes.length}} </label>
           </div>
-          <div class="table">
+          <div class="des">
+            <label> Estudiantes </label>
+          </div>
+          <div class="busqueda">
+            <label>Buscar : </label>
+            <input class="buscar" />
+          </div>
+        </div>
+        <div class="table">
           <table>
-              <thead >
-                  <tr class="table-cabecera">
-                      <th style="width: 160px;"> IDENTIFICACIÓN </th>
-                      <th style="width: 140px;"> NOMBRE </th>
-                      <th style="width: 35px;"> EDAD </th>
-                      <th style="width: 35px;"> GENERO </th>
-                      <th style="width: 90px;"> CONTACTO </th>
-                      <th style="width: 140px;">CORREO</th>
-                      <th>ACUDIENTE</th>
-                      <th style="width: 35px;">CURSO</th>
-                  </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of datosEstudiantes">
-                  <th >
-                    {{item.identificacion}}
-                  </th>
-                  <th>
-                    {{item.nombre}}
-                  </th>
-                  <th>
-                    {{item.edad}}
-                  </th>
-                  <th>
-                    {{item.genero}}
-                  </th>
-                  <th>
-                    {{item.contacto}}
-                  </th>
-                  <th>
-                    {{item.correo}}
-                  </th>
-                  <th>
-                    {{item.acudiente }}
-                  </th>
-                  <th>
-                    {{item.grado}} - {{item.curso}}
-                  </th>
-                </tr>
-              </tbody>
+            <thead>
+              <tr class="table-cabecera">
+                <th style="width: 160px">IDENTIFICACIÓN</th>
+                <th style="width: 140px">NOMBRE</th>
+                <th style="width: 35px">EDAD</th>
+                <th style="width: 35px">GENERO</th>
+                <th style="width: 90px">CONTACTO</th>
+                <th style="width: 140px">CORREO</th>
+                <th>ACUDIENTE</th>
+                <th style="width: 35px">CURSO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of datosEstudiantes">
+                <th>
+                  {{ item.identificacion }}
+                </th>
+                <th>
+                  {{ item.nombre }}
+                </th>
+                <th>
+                  {{ item.edad }}
+                </th>
+                <th *ngIf="item.genero == 'M'">
+                  <p>MASCULINO</p>
+                </th>
+                <th *ngIf="item.genero == 'F'">
+                  <p>FEMENINO</p>
+                </th>
+                <th>
+                  {{ item.contacto }}
+                </th>
+                <th>
+                  {{ item.correo }}
+                </th>
+                <th>
+                  {{ item.acudiente }}
+                </th>
+                <th>{{ item.grado }}-{{ item.curso }}</th>
+              </tr>
+            </tbody>
           </table>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-
-  <div
+<div
   class="modal fade modal-lg"
   id="Modal"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
-<form [formGroup]="myForm" (ngSubmit)="guardar(myForm)"> 
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
-          Estudiantes
-        </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="form">
-          <div class="id">
-            <input formControlName="identificacion" type="number" class="id" placeholder="IDENTIFICACION" />
-          </div>
-          <div class="nombre">
-            <input formControlName="nombre" class="nombre" placeholder="NOMBRE" />
-          </div>
-          <div class="edad">
-            <input formControlName="edad" type="number" class="edad" placeholder="EDAD" />
-            <select formControlName="genero" class="genero">
-              <option hidden selected> GENERO </option>
-              <option value="M"> MASCULINO </option>
-              <option value="F"> FEMENINO </option>
-            </select>
-          </div>
-          <div class="contacto">
-            <input formControlName="contacto" type="number" class="contacto" placeholder="CONTACTO" />
-          </div>
-          <div class="correo">
-            <input formControlName="correo" type="email" class="correo" placeholder="CORREO" />
-          </div>
-          <div class="acudiente">
-            <input formControlName="acudiente" class="acudiente" placeholder="ACUDIENTE" />
-          </div>
-          <div type="correo" class="grado">
-            <select formControlName="grado" class="grado">
-              <option hidden selected> GRADO </option>
-              <option value="6"> 6 </option>
-              <option value="7"> 7 </option>
-              <option value="8"> 8 </option>
-              <option value="9"> 9 </option>
-              <option value="10"> 10 </option>
-              <option value="11"> 11 </option>
-            </select>
-            <select formControlName="curso" class="curso">
-              <option hidden selected> CURSO </option>
-              <option value="1"> 1 </option>
-              <option value="6"> 2 </option>
-              <option value="6"> 3 </option>
-              <option value="6"> 4 </option>
-            </select>
+  <form [formGroup]="myForm" (ngSubmit)="guardar(myForm)">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Estudiantes</h1>
+          <button
+            (click)="cancelar()"
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="id">
+              <input
+                formControlName="identificacion"
+                type="number"
+                class="id"
+                placeholder="IDENTIFICACION"
+              />
+            </div>
+            <div class="nombre">
+              <input
+                formControlName="nombre"
+                class="nombre"
+                placeholder="NOMBRE"
+              />
+            </div>
+            <div class="edad">
+              <input
+                formControlName="edad"
+                type="number"
+                class="edad"
+                placeholder="EDAD"
+              />
+              <select formControlName="genero" class="genero">
+                <option hidden selected value="">GENERO</option>
+                <option value="M">MASCULINO</option>
+                <option value="F">FEMENINO</option>
+              </select>
+            </div>
+            <div class="contacto">
+              <input
+                formControlName="contacto"
+                type="number"
+                class="contacto"
+                placeholder="CONTACTO"
+              />
+            </div>
+            <div class="correo">
+              <input
+                formControlName="correo"
+                type="email"
+                class="correo"
+                placeholder="CORREO"
+              />
+            </div>
+            <div class="acudiente">
+              <input
+                formControlName="acudiente"
+                class="acudiente"
+                placeholder="ACUDIENTE"
+              />
+            </div>
+            <div type="correo" class="grado">
+              <select formControlName="grado" class="grado">
+                <option hidden selected value="">GRADO</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+              </select>
+              <select formControlName="curso" class="curso">
+                <option hidden selected value="">CURSO</option>
+                <option value="1">1</option>
+                <option value="6">2</option>
+                <option value="6">3</option>
+                <option value="6">4</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancelar
-        </button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <div class="modal-footer">
+          <button
+            (click)="cancelar()"
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
       </div>
     </div>
-  </div>
-</form>
+  </form>
 </div>
-

@@ -17,14 +17,14 @@ export class PsicologasServiceService {
   }
 
   createPsicologas(psicologas : Psicologas) {
-    return this.servicio.post<Psicologas>(`${this.servidor}/profesores`, psicologas);
+    return this.servicio.post<Psicologas>(`${this.servidor}/psicologas`, psicologas);
   }
 
   updatePsicologas(psicologas : Psicologas) {
-    return this.servicio.put<Psicologas>(`${this.servidor}/estudiantes/${psicologas.identificacion}` , psicologas)
+    return this.servicio.put<Psicologas>(`${this.servidor}/psicologas/${psicologas.identificacion}` , psicologas)
   }
 
   deletePsicologas(psicologas : Psicologas){
-    return this.servicio.delete<Psicologas>(`${this.servidor}/profesores/${psicologas.identificacion}`);
+    return this.servicio.delete<Psicologas>(`${this.servidor}/psicologas/${psicologas.identificacion}`);
   }
 }

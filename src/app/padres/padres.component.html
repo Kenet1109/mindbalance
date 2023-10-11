@@ -54,19 +54,19 @@
             <tbody>
               <tr *ngFor="let item of datosPadres">
                 <th>
-                  {{item.identificacion}}
+                  {{ item.identificacion }}
                 </th>
                 <th>
-                  {{item.nombre}}
+                  {{ item.nombre }}
                 </th>
                 <th>
-                  {{item.correo}}
+                  {{ item.correo }}
                 </th>
                 <th>
-                  {{item.contacto}}
+                  {{ item.contacto }}
                 </th>
                 <th>
-                  {{item.acudiente}}
+                  {{ item.acudiente }}
                 </th>
               </tr>
             </tbody>
@@ -83,51 +83,76 @@
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
-<form [formGroup]="myForm" (ngSubmit)="guardar(myForm)"> 
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
-          Padres de Familia
-        </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="form">
-          <div class="id">
-            <input formControlName="identificacion" type="number" class="id" placeholder="IDENTIFICACION" />
-          </div>
-          <div class="nombre">
-            <input formControlName="nombre" class="nombre" placeholder="NOMBRE" />
-          </div>
-          <div type="correo" class="correo">
-            <input formControlName="correo" class="correo" placeholder="CORREO" />
-          </div>
-          <div class="contacto">
-            <input formControlName="contacto" type="number" class="contacto" placeholder="CONTACTO" />
-          </div>
-          <div class="acudiente">
-            <input
-              formControlName="acudiente"
-              type="number"
-              class="acudiente"
-              placeholder="ACUDIENTE DE "
-            />
+  <form [formGroup]="myForm" (ngSubmit)="guardar(myForm)">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Padres de Familia
+          </h1>
+          <button
+            (click)="cancelar()"
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="form">
+            <div class="id">
+              <input
+                formControlName="identificacion"
+                type="number"
+                class="id"
+                placeholder="IDENTIFICACION"
+              />
+            </div>
+            <div class="nombre">
+              <input
+                formControlName="nombre"
+                class="nombre"
+                placeholder="NOMBRE"
+              />
+            </div>
+            <div type="correo" class="correo">
+              <input
+                formControlName="correo"
+                type="email"
+                class="correo"
+                placeholder="CORREO"
+              />
+            </div>
+            <div class="contacto">
+              <input
+                formControlName="contacto"
+                type="number"
+                class="contacto"
+                placeholder="CONTACTO"
+              />
+            </div>
+            <div class="acudiente">
+              <input
+                formControlName="acudiente"
+                type="number"
+                class="acudiente"
+                placeholder="ACUDIENTE DE "
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancelar
-        </button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <div class="modal-footer">
+          <button
+            (click)="cancelar()"
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
       </div>
     </div>
-  </div>
-</form>
+  </form>
 </div>

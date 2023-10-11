@@ -29,14 +29,14 @@ export class PsicologaComponent implements OnInit {
     });
 
     let arrayPsicologas: Array<Psicologas> = [];
-    this.servicioPsicologas.getPsicologas().subscribe(datos => {
-      this.datosPsicologas = datos.data;
+    this.servicioPsicologas.getPsicologas().subscribe((data) => {
+      this.datosPsicologas = data;
     });
   }
 
   guardar(form: FormGroup) {
     if (form.valid) {
-      this.servicioPsicologas.createPsicologas(form.value).subscribe(data => {
+      this.servicioPsicologas.createPsicologas(form.value).subscribe((data) => {
         alert("Se registro la Psicologa con exito!")
         this.refresh();
         this.myForm.reset();
@@ -48,11 +48,13 @@ export class PsicologaComponent implements OnInit {
 
   refresh() {
     let arrayPsicologas: Array<Psicologas> = [];
-    this.servicioPsicologas.getPsicologas().subscribe(datos => {
-      this.datosPsicologas = datos.data;
+    this.servicioPsicologas.getPsicologas().subscribe((data) => {
+      this.datosPsicologas = data;
     });
   }
 
-
+  cancelar(){
+    this.myForm.reset();
+  }
 
 }

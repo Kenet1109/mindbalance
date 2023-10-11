@@ -13,7 +13,7 @@ export class EstudiantesServiceService {
   constructor( private servicio : HttpClient) { }
 
   getEstudiantes(): Observable<any> {
-    return this.servicio.get(`${this.servidor}/observaciones`);
+    return this.servicio.get(`${this.servidor}/estudiantes`);
   }
 
   createEstudiantes(estudiantes: Estudiantes) {

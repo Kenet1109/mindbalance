@@ -12,9 +12,9 @@ export class GradosServiceService {
 
   servidor = 'http://localhost:8080/api';
 
-  constructor( private servicio : HttpClient) { }
+  constructor( private servicio: HttpClient) { }
 
-  getGrados(): Observable<any> {
+  getGrados() : Observable<any> {
     return this.servicio.get(`${this.servidor}/grados`);
   }
 
